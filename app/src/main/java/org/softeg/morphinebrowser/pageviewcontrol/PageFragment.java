@@ -110,17 +110,17 @@ public abstract class PageFragment extends PageViewFragment implements
         final SeekBar seekBar = (SeekBar) v.findViewById(R.id.value_seekbar);
         seekBar.setProgress(AppPreferences.getWebViewFontSize());
         final TextView textView = (TextView) v.findViewById(R.id.value_textview);
-        textView.setText((seekBar.getProgress() + 1) + "");
+        textView.setText((seekBar.getProgress() + 1) + "px");
 
         v.findViewById(R.id.button_minus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (seekBar.getProgress() > 1){
+                if (seekBar.getProgress() > 0){
                     int i=seekBar.getProgress() - 1;
 
                     seekBar.setProgress(i);
                     getWebView().getSettings().setDefaultFontSize(i + 1);
-                    textView.setText((i + 1) + "");
+                    textView.setText((i + 1) + "px");
                 }
             }
         });
@@ -132,7 +132,7 @@ public abstract class PageFragment extends PageViewFragment implements
 
                     seekBar.setProgress(i);
                     getWebView().getSettings().setDefaultFontSize(i + 1);
-                    textView.setText((i + 1) + "");
+                    textView.setText((i + 1) + "px");
                 }
             }
         });
@@ -141,7 +141,7 @@ public abstract class PageFragment extends PageViewFragment implements
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 getWebView().getSettings().setDefaultFontSize(i + 1);
-                textView.setText((i + 1) + "");
+                textView.setText((i + 1) + "px");
             }
 
             @Override
@@ -161,7 +161,7 @@ public abstract class PageFragment extends PageViewFragment implements
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        AppPreferences.setWebViewFontSize(seekBar.getProgress() + 1);
+                        AppPreferences.setWebViewFontSize(seekBar.getProgress());
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {

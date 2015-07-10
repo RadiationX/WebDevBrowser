@@ -76,6 +76,9 @@ public class WebFragment extends PageFragment {
         } else if (id == R.id.action_width) {
             showWidthDialog();
             return true;
+        } else if (id == R.id.action_close) {
+            getActivity().finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -114,11 +117,13 @@ public class WebFragment extends PageFragment {
         v.findViewById(R.id.button_plus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i=seekBar.getProgress() + 1;
+                if (seekBar.getProgress() < seekBar.getMax()) {
+                    int i=seekBar.getProgress() + 1;
 
-                seekBar.setProgress(i);
-                getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
-                textView.setText((i) + "px");
+                    seekBar.setProgress(i);
+                    getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
+                    textView.setText((i) + "px");
+                }
             }
         });
 

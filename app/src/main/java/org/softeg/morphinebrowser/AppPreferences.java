@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 public class AppPreferences {
     public static int getWebViewFontSize() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
-        return prefs.getInt("WebView.FontSize", 16);
+        return prefs.getInt("WebView.FontSize", 15);
     }
 
     public static void setWebViewFontSize(int value) {

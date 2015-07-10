@@ -20,4 +20,8 @@
         android:title="Сохранить"
         android:orderInCategory="300"
         android:showAsAction="never" />
+    <item android:id="@+id/action_close"
+        android:title="Закрыть"
+        android:orderInCategory="400"
+        android:showAsAction="never" />
 </menu>

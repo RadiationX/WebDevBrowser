@@ -70,7 +70,7 @@ public class AppWebView extends ScollWebView {
         setScrollbarFadingEnabled(false);
         getSettings().setLoadWithOverviewMode(false);
         getSettings().setUseWideViewPort(true);
-        getSettings().setDefaultFontSize(17);
+        getSettings().setDefaultFontSize(16);
         if (Build.VERSION.SDK_INT >= 19) {
             try {
                 getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
