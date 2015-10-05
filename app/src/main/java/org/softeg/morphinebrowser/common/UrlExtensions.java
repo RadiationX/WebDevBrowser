@@ -1,10 +1,11 @@
 package org.softeg.morphinebrowser.common;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.softeg.morphinebrowser.AppLog;
 
@@ -28,13 +29,14 @@ public class UrlExtensions {
                 ids = new int[]{OPEN_IN_BROWSER, SHARE_IT, COPY};
 
             final int[] finalIds = ids;
-            new AlertDialog.Builder(activity)
-                    .setTitle(url)
-                    .setSingleChoiceItems(titles, -1, new DialogInterface.OnClickListener() {
+
+            new MaterialDialog.Builder(activity)
+                    .title(url)
+                    .items(titles)
+                    .itemsCallback(new MaterialDialog.ListCallback() {
                         @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            int id = finalIds[i];
+                        public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                            int id = finalIds[which];
                             try {
                                 switch (id) {
                                     case OPEN_IN_BROWSER:
@@ -53,9 +55,11 @@ public class UrlExtensions {
                             } catch (Throwable ex) {
                                 AppLog.e(activity, ex);
                             }
+                            dialog.dismiss();
                         }
                     })
-                    .create().show();
+                    .show();
+
         } catch (Throwable ex) {
             AppLog.e(activity, ex);
         }

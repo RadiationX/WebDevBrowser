@@ -4,20 +4,27 @@ package org.softeg.morphinebrowser;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Window;
+import android.widget.Toast;
+
+import org.softeg.morphinebrowser.controls.AppWebView;
+
+import java.util.TooManyListenersException;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+
         setContentView(R.layout.activity_main);
-        setProgressBarIndeterminateVisibility(false);
+        setSupportProgressBarIndeterminateVisibility(false);
         createFragment(getIntent() != null ? getIntent().getData() : null);
     }
 
@@ -34,5 +41,13 @@ public class MainActivity extends FragmentActivity {
         transaction.commit();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        AppWebView webView = ((WebFragment)getSupportFragmentManager().findFragmentById(R.id.topic_fragment_container)).getWebView();
+        if (webView!=null && webView.canGoBack()) {
+            webView.goBack();
+        }else {
+            super.onBackPressed();
+        }
+    }
 }

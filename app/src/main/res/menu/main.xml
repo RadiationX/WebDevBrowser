@@ -1,27 +1,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <item android:id="@+id/write_url"
+        android:title="Вести URL"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_pencil_white_24dp"/>
+
     <item android:id="@+id/action_refresh"
         android:title="Обновить"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_reload_white_24dp"/>
 
     <item android:id="@+id/action_fontsize"
         android:title="Размер шрифта"
-        android:orderInCategory="200"
-        android:showAsAction="never" />
+        android:orderInCategory="300"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_format_size_white_24dp"/>
 
     <item android:id="@+id/action_width"
         android:title="Ширина экрана"
-        android:orderInCategory="200"
-        android:showAsAction="never" />
+        android:orderInCategory="400"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_crop_free_white_24dp"/>
 
     <item android:id="@+id/action_save"
         android:title="Сохранить"
-        android:orderInCategory="300"
-        android:showAsAction="never" />
+        android:orderInCategory="500"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_content_save_white_24dp"/>
+
     <item android:id="@+id/action_close"
         android:title="Закрыть"
-        android:orderInCategory="400"
-        android:showAsAction="never" />
+        android:orderInCategory="600"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_close_white_24dp"/>
 </menu>

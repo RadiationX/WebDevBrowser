@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
-
 import org.softeg.morphinebrowser.App;
 import org.softeg.morphinebrowser.AppLog;
 import org.softeg.morphinebrowser.common.FileUtils;

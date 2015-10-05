@@ -1,22 +1,22 @@
 package org.softeg.morphinebrowser;
 
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.softeg.morphinebrowser.pageviewcontrol.PageFragment;
+import com.afollestad.materialdialogs.MaterialDialog;
 
-import java.net.URL;
+import org.softeg.morphinebrowser.pageviewcontrol.PageFragment;
 
 /*
  * Created by slartus on 25.10.2014.
@@ -47,8 +47,7 @@ public class WebFragment extends PageFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mUrlEdit.setText(mUrl);
-        loadUrl();
+        loadUrl(mUrl);
     }
 
     @Override
@@ -79,6 +78,9 @@ public class WebFragment extends PageFragment {
         } else if (id == R.id.action_close) {
             getActivity().finish();
             return true;
+        }else if (id == R.id.write_url) {
+            writeUrl();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -99,18 +101,18 @@ public class WebFragment extends PageFragment {
         seekBar.setMax(screenWidth);
         seekBar.setProgress(webViewWidth);
 
-        final TextView textView = (TextView) v.findViewById(R.id.value_textview);
-        textView.setText((seekBar.getProgress()) + "px");
+        final EditText editText = (EditText) v.findViewById(R.id.value_text);
+        editText.setText((seekBar.getProgress()) + "");
 
         v.findViewById(R.id.button_minus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (seekBar.getProgress() > 0) {
-                    int i=seekBar.getProgress() - 1;
+                    int i = seekBar.getProgress() - 1;
 
                     seekBar.setProgress(i);
                     getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
-                    textView.setText((i) + "px");
+                    editText.setText((i) + "");
                 }
             }
         });
@@ -118,21 +120,41 @@ public class WebFragment extends PageFragment {
             @Override
             public void onClick(View v) {
                 if (seekBar.getProgress() < seekBar.getMax()) {
-                    int i=seekBar.getProgress() + 1;
+                    int i = seekBar.getProgress() + 1;
 
                     seekBar.setProgress(i);
                     getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
-                    textView.setText((i) + "px");
+                    editText.setText((i) + "");
                 }
             }
         });
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().equals("")) {
+                    seekBar.setProgress(Integer.valueOf(s.toString()));
+                    editText.setSelection(s.length());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 try {
-                    getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
-                    textView.setText((i) + "px");
+                    RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    rl_lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    getWebView().setLayoutParams(rl_lp);
+                    //getWebView().setLayoutParams(new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT));
+                    editText.setText((i) + "");
                 } catch (Throwable ex) {
                     AppLog.e(getActivity(), ex);
                 }
@@ -149,22 +171,12 @@ public class WebFragment extends PageFragment {
 
             }
         });
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Ширина экрана")
-                .setView(v)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .create().show();
-
+        new MaterialDialog.Builder(getActivity())
+                .title("Ширина экрана")
+                .customView(v, false)
+                .positiveText("Ок")
+                .negativeText("Отмена")
+                .show();
     }
+
 }

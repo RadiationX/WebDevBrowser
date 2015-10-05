@@ -24,17 +24,16 @@ public class AppWebViewClient extends WebViewClient {
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
 
-        listener.setProgressBarIndeterminateVisibility(true);
+        listener.setSupportProgressBarIndeterminateVisibility(true);
         //ThemeActivity.this.setProgressBarIndeterminateVisibility(true);
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-        view.clearHistory();
-        listener.setProgressBarIndeterminateVisibility(false);
+        listener.setSupportProgressBarIndeterminateVisibility(false);
     }
-
+/*
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, final String url) {
 
@@ -46,5 +45,6 @@ public class AppWebViewClient extends WebViewClient {
         }
         return true;
     }
+    */
 
 }

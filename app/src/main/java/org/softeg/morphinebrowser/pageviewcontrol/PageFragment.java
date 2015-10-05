@@ -1,18 +1,17 @@
 package org.softeg.morphinebrowser.pageviewcontrol;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.softeg.morphinebrowser.AppLog;
 import org.softeg.morphinebrowser.AppPreferences;
@@ -109,18 +108,18 @@ public abstract class PageFragment extends PageViewFragment implements
         assert v != null;
         final SeekBar seekBar = (SeekBar) v.findViewById(R.id.value_seekbar);
         seekBar.setProgress(AppPreferences.getWebViewFontSize());
-        final TextView textView = (TextView) v.findViewById(R.id.value_textview);
-        textView.setText((seekBar.getProgress() + 1) + "px");
+        final EditText editText = (EditText) v.findViewById(R.id.value_text);
+        editText.setText((seekBar.getProgress() + 1) + "");
 
         v.findViewById(R.id.button_minus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (seekBar.getProgress() > 0){
-                    int i=seekBar.getProgress() - 1;
+                if (seekBar.getProgress() > 0) {
+                    int i = seekBar.getProgress() - 1;
 
                     seekBar.setProgress(i);
                     getWebView().getSettings().setDefaultFontSize(i + 1);
-                    textView.setText((i + 1) + "px");
+                    editText.setText((i + 1) + "");
                 }
             }
         });
@@ -128,20 +127,38 @@ public abstract class PageFragment extends PageViewFragment implements
             @Override
             public void onClick(View v) {
                 if (seekBar.getProgress() < seekBar.getMax()) {
-                    int i=seekBar.getProgress() + 1;
+                    int i = seekBar.getProgress() + 1;
 
                     seekBar.setProgress(i);
                     getWebView().getSettings().setDefaultFontSize(i + 1);
-                    textView.setText((i + 1) + "px");
+                    editText.setText((i + 1) + "");
                 }
             }
         });
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!s.toString().equals("")){
+                    seekBar.setProgress(Integer.valueOf(s.toString())-1);
+                    editText.setSelection(s.length());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 getWebView().getSettings().setDefaultFontSize(i + 1);
-                textView.setText((i + 1) + "px");
+                editText.setText((i + 1) + "");
             }
 
             @Override
@@ -154,25 +171,25 @@ public abstract class PageFragment extends PageViewFragment implements
 
             }
         });
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Размер шрифта")
-                .setView(v)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new MaterialDialog.Builder(getActivity())
+                .title("Размер шрифта")
+                .customView(v, false)
+                .positiveText("Ок")
+                .negativeText("Отмена")
+                .callback(new MaterialDialog.ButtonCallback() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+                    public void onPositive(MaterialDialog dialog) {
                         AppPreferences.setWebViewFontSize(seekBar.getProgress());
+                        super.onPositive(dialog);
                     }
-                })
-                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        getWebView().getSettings().setDefaultFontSize(AppPreferences.getWebViewFontSize());
-                    }
-                })
-                .create().show();
 
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                        getWebView().getSettings().setDefaultFontSize(AppPreferences.getWebViewFontSize());
+                        super.onNegative(dialog);
+                    }
+                })
+                .show();
     }
 
     protected void showSelectStyleDialog(){
@@ -209,7 +226,26 @@ public abstract class PageFragment extends PageViewFragment implements
 //            AppLog.e(ex);
 //        }
     }
+    protected void writeUrl() {
+        View v = getActivity().getLayoutInflater().inflate(R.layout.url_textview, null);
+        assert v != null;
+        final EditText editText = (EditText) v.findViewById(R.id.editText);
+        editText.setText(globalUrl);
 
+        new MaterialDialog.Builder(getActivity())
+                .title("Введите URL")
+                .customView(v, false)
+                .positiveText("Ок")
+                .negativeText("Отмена")
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        loadUrl(editText.getText().toString());
+                        super.onPositive(dialog);
+                    }
+                })
+                .show();
+    }
 
     private static void getStylesList(ArrayList<CharSequence> newStyleNames, ArrayList<CharSequence> newstyleValues,
                                       File file, String ext) {

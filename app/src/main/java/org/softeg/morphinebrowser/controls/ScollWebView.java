@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.webkit.WebView;
 
-
 import org.softeg.morphinebrowser.AppLog;
 
 import java.util.Calendar;

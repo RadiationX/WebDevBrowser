@@ -3,21 +3,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/value_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="0" />
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
 
     <SeekBar
         android:id="@+id/value_seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="69"/>
-
+    <EditText
+        android:id="@+id/value_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:text="0" />
     <LinearLayout
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
