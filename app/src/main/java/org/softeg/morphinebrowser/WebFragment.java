@@ -1,5 +1,6 @@
 package org.softeg.morphinebrowser;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -104,6 +107,7 @@ public class WebFragment extends PageFragment {
         final EditText editText = (EditText) v.findViewById(R.id.value_text);
         editText.setText((seekBar.getProgress()) + "");
 
+
         v.findViewById(R.id.button_minus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +188,9 @@ public class WebFragment extends PageFragment {
                 .positiveText("Ок")
                 .negativeText("Отмена")
                 .show();
+        editText.selectAll();
+        editText.requestFocus();
+        ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
 }

@@ -1,11 +1,13 @@
 package org.softeg.morphinebrowser.pageviewcontrol;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -143,8 +145,8 @@ public abstract class PageFragment extends PageViewFragment implements
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().equals("")){
-                    seekBar.setProgress(Integer.valueOf(s.toString())-1);
+                if (!s.toString().equals("")) {
+                    seekBar.setProgress(Integer.valueOf(s.toString()) - 1);
                     editText.setSelection(s.length());
                 }
             }
@@ -190,6 +192,9 @@ public abstract class PageFragment extends PageViewFragment implements
                     }
                 })
                 .show();
+        editText.selectAll();
+        editText.requestFocus();
+        ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     protected void showSelectStyleDialog(){
