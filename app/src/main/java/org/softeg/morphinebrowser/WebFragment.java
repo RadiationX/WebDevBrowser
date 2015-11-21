@@ -111,7 +111,10 @@ public class WebFragment extends PageFragment {
                     int i = seekBar.getProgress() - 1;
 
                     seekBar.setProgress(i);
-                    getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
+                    RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    rl_lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    getWebView().setLayoutParams(rl_lp);
+                    rl_lp = null;
                     editText.setText((i) + "");
                 }
             }
@@ -123,7 +126,10 @@ public class WebFragment extends PageFragment {
                     int i = seekBar.getProgress() + 1;
 
                     seekBar.setProgress(i);
-                    getWebView().setLayoutParams(new LinearLayout.LayoutParams(i, LinearLayout.LayoutParams.MATCH_PARENT));
+                    RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    rl_lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    getWebView().setLayoutParams(rl_lp);
+                    rl_lp = null;
                     editText.setText((i) + "");
                 }
             }
@@ -153,6 +159,7 @@ public class WebFragment extends PageFragment {
                     RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT);
                     rl_lp.addRule(RelativeLayout.CENTER_IN_PARENT);
                     getWebView().setLayoutParams(rl_lp);
+                    rl_lp = null;
                     //getWebView().setLayoutParams(new RelativeLayout.LayoutParams(i, RelativeLayout.LayoutParams.MATCH_PARENT));
                     editText.setText((i) + "");
                 } catch (Throwable ex) {
