@@ -98,7 +98,7 @@ public class Developer implements IHtmlOut {
                     }
 
 
-                    File file = new File(App.getInstance().getExternalFilesDir(null), "Topic.txt");
+                    File file = new File(App.getInstance().getExternalFilesDir(null), "Topic.html");
                     FileWriter out = new FileWriter(file);
                     out.write(html);
                     out.close();
