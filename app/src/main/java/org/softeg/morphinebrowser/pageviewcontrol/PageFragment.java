@@ -11,7 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -271,5 +270,18 @@ public abstract class PageFragment extends PageViewFragment implements
 
             }
         }
+    }
+    protected void showCacheDialog(){
+        new MaterialDialog.Builder(getContext())
+                .title("Настройки кеша")
+                .items(new String[]{"Сначала кеш, потом сеть", "Отключить кеш", "Только из кеша"})
+                .itemsCallbackSingleChoice(AppPreferences.getCacheMode() - 1, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {
+                        AppPreferences.setCacheMode(i + 1);
+                        return false;
+                    }
+                })
+                .show();
     }
 }

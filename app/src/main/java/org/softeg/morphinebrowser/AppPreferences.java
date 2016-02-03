@@ -17,4 +17,15 @@ public class AppPreferences {
         prefs.edit().putInt("WebView.FontSize", value).apply();
     }
 
+    public static int getCacheMode() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
+        return prefs.getInt("WebView.CacheMode", 1);
+    }
+
+    public static void setCacheMode(int value) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
+        prefs.edit().putInt("WebView.CacheMode", value).apply();
+    }
+
+
 }

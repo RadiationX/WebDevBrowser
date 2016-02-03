@@ -85,6 +85,10 @@ public class WebFragment extends PageFragment {
             writeUrl();
             return true;
         }
+        else if (id == R.id.cache_mode) {
+            showCacheDialog();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

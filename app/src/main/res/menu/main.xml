@@ -31,7 +31,11 @@
         android:orderInCategory="500"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_content_save_white_24dp"/>
-
+    <item android:id="@+id/cache_mode"
+        android:title="Настройки кеша"
+        android:orderInCategory="500"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_content_save_white_24dp"/>
     <item android:id="@+id/action_close"
         android:title="Закрыть"
         android:orderInCategory="600"

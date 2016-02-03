@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
 import org.softeg.morphinebrowser.AppLog;
+import org.softeg.morphinebrowser.AppPreferences;
 import org.softeg.morphinebrowser.R;
 import org.softeg.morphinebrowser.controls.AppWebView;
 import org.softeg.morphinebrowser.pageviewcontrol.htmloutinterfaces.AppWebChromeClient;
@@ -41,6 +43,8 @@ public class PageViewFragment extends Fragment implements View.OnClickListener, 
             if (!TextUtils.isEmpty(url) && !url.contains("://")) {
                 url = "http://" + url;
             }
+            mWebView.getSettings().setCacheMode(AppPreferences.getCacheMode());
+            Log.e("kek", AppPreferences.getCacheMode() + "");
             mWebView.loadUrl(url);
             globalUrl = url;
             mWebView.setWebViewClient(new AppWebViewClient(this));

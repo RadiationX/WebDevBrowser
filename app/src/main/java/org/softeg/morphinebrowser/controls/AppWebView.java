@@ -4,10 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
 
+import org.softeg.morphinebrowser.AppPreferences;
 
 
 /*
@@ -56,7 +58,8 @@ public class AppWebView extends ScollWebView {
 
         getSettings().setDomStorageEnabled(true);
         getSettings().setAllowFileAccess(true);
-        getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        getSettings().setCacheMode(AppPreferences.getCacheMode());
+        Log.e("kek", AppPreferences.getCacheMode()+"");
 
         if (Build.VERSION.SDK_INT > 15) {
             getSettings().setAllowFileAccessFromFileURLs(true); //Maybe you don't need this rule
