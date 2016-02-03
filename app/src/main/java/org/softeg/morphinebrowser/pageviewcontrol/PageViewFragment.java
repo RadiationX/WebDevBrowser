@@ -45,7 +45,10 @@ public class PageViewFragment extends Fragment implements View.OnClickListener, 
             }
             mWebView.getSettings().setCacheMode(AppPreferences.getCacheMode());
             Log.e("kek", AppPreferences.getCacheMode() + "");
-            mWebView.loadUrl(url);
+            if(url.equals(globalUrl))
+                mWebView.reload();
+            else
+                mWebView.loadUrl(url);
             globalUrl = url;
             mWebView.setWebViewClient(new AppWebViewClient(this));
         }catch (Throwable ex){

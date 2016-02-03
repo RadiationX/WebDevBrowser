@@ -58,6 +58,7 @@ public class AppWebView extends ScollWebView {
 
         getSettings().setDomStorageEnabled(true);
         getSettings().setAllowFileAccess(true);
+        getSettings().setAppCacheEnabled(true);
         getSettings().setCacheMode(AppPreferences.getCacheMode());
         Log.e("kek", AppPreferences.getCacheMode()+"");
 
