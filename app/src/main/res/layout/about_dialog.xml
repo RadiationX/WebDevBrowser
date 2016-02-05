@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Разработчики\nАртём Слинкин (slartus)\nЕвгений Низамиев (Radiation15/RadiationX)\n\nПомошник:\nАртём Жиганов (Snow Volf)\n\nOсобая благодарность:\nАлексей Шолохов (Morfij)"
+        android:id="@+id/textView2"
+        android:layout_weight="0.91"
+        android:textColor="#000000"
+        android:textColorLink="#4442bb" />
+
+</LinearLayout>
