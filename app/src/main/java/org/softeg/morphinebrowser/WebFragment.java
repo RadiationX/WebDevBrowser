@@ -89,6 +89,10 @@ public class WebFragment extends PageFragment {
             showCacheDialog();
             return true;
         }
+        else if (id == R.id.action_about) {
+            showAboutDialog();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -196,5 +200,14 @@ public class WebFragment extends PageFragment {
         editText.requestFocus();
         ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
+ protected void showAboutDialog() {
+        View v = getActivity().getLayoutInflater().inflate(R.layout.about_dialog, null);
 
+
+        new MaterialDialog.Builder(getActivity())
+                .title(" WDB 1.2.2")
+                .customView(v, true)
+                .positiveText("Ок")
+                .show();
+    }
 }
