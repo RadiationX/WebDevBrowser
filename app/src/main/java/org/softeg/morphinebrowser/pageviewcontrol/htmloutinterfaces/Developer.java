@@ -105,7 +105,7 @@ public class Developer implements IHtmlOut {
                     Uri uri = Uri.fromFile(file);
 
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(uri, "text/plain");
+                    intent.setDataAndType(uri, "text/html");
                     getContext().startActivity(intent);
                 } catch (Exception e) {
                     AppLog.e(getActivity(), e);
