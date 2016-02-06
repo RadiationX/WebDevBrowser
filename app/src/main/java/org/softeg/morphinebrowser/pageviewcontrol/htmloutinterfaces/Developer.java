@@ -85,35 +85,10 @@ public class Developer implements IHtmlOut {
         });
     }
 
-    @JavascriptInterface
+   @JavascriptInterface
     public void saveHtml(final String html) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    String state = Environment.getExternalStorageState();
-                    if (!Environment.MEDIA_MOUNTED.equals(state)) {
-                        Toast.makeText(getContext(), "Внешнее хранилище недоступно!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-
-                    File file = new File(App.getInstance().getExternalFilesDir(null), "Topic.html");
-                    FileWriter out = new FileWriter(file);
-                    out.write(html);
-                    out.close();
-                    Uri uri = Uri.fromFile(file);
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(uri, "text/html");
-                    getContext().startActivity(intent);
-                } catch (Exception e) {
-                    AppLog.e(getActivity(), e);
-                }
-            }
-        });
+        new saveHtml(getActivity(),html,"Topic");
     }
-
 
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent data) {
