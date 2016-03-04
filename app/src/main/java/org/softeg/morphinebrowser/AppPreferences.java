@@ -27,5 +27,4 @@ public class AppPreferences {
         prefs.edit().putInt("WebView.CacheMode", value).apply();
     }
 
-
 }

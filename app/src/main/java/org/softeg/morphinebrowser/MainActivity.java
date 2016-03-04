@@ -6,18 +6,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.view.KeyEvent;
 import android.view.Window;
-import android.widget.Toast;
 
 import org.softeg.morphinebrowser.controls.AppWebView;
 
-import java.util.TooManyListenersException;
 
-
-public class MainActivity extends ActionBarActivity {
-
-
+public class MainActivity extends ActionBarActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);

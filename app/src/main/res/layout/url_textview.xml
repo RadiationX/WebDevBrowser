@@ -12,5 +12,6 @@
         android:layout_height="wrap_content"
         android:inputType="textWebEditText"
         android:singleLine="true"/>
+
 </LinearLayout>
 

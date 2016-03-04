@@ -9,13 +9,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -81,20 +78,21 @@ public class WebFragment extends PageFragment {
         } else if (id == R.id.action_close) {
             getActivity().finish();
             return true;
-        }else if (id == R.id.write_url) {
+        } else if (id == R.id.write_url) {
             writeUrl();
             return true;
-        }
-        else if (id == R.id.cache_mode) {
+        } else if (id == R.id.cache_mode) {
             showCacheDialog();
             return true;
-        }
-        else if (id == R.id.action_about) {
+        } else if (id == R.id.action_about) {
             showAboutDialog();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
+
 
     protected void showWidthDialog() {
         View v = getActivity().getLayoutInflater().inflate(R.layout.font_size_dialog, null);
@@ -198,16 +196,20 @@ public class WebFragment extends PageFragment {
                 .show();
         editText.selectAll();
         editText.requestFocus();
-        ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
- protected void showAboutDialog() {
+
+    protected void showAboutDialog() {
         View v = getActivity().getLayoutInflater().inflate(R.layout.about_dialog, null);
 
 
         new MaterialDialog.Builder(getActivity())
-                .title(" WDB 1.2.2")
+                .title(" WDB 1.2.4")
                 .customView(v, true)
                 .positiveText("Ок")
                 .show();
     }
+
+
 }
+

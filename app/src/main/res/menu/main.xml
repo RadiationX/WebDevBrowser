@@ -36,14 +36,14 @@
         android:orderInCategory="500"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_content_save_white_24dp"/>
-     <item android:id="@+id/action_about"
+    <item android:id="@+id/action_about"
         android:title="О программе"
-        android:orderInCategory="600"
+        android:orderInCategory="700"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_close_white_24dp"/>
     <item android:id="@+id/action_close"
         android:title="Закрыть"
-        android:orderInCategory="700"
+        android:orderInCategory="800"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_close_white_24dp"/>
 </menu>
