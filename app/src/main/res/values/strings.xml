@@ -7,13 +7,15 @@
     <string name="choose_button">Выбрать</string>
     <string name="error_label">Ошибка!</string>
     <string name="storage_perm_error">Невозможно получить доступ к карте-SD</string>
-
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="drawer_item_home">Главный экран</string>
+    <string name="drawer_item_custom">Custom</string>
+    <string name="drawer_item_settings">Настройки</string>
+    <string name="drawer_item_more">Дополнительно</string>
+    <string name="drawer_item_open_source">GitHub</string>
+    <string name="drawer_item_contact">Связаться</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="about_text">Разработчики\nАртём Слинкин (slartus)\nЕвгений Низамиев (Radiation15/RadiationX)\n\nПомошник:\nАртём Жиганов (Snow Volf)\n\nOсобая благодарность:\nАлексей Шолохов (Morfij)</string>
 
 </resources>

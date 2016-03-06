@@ -92,8 +92,6 @@ public class WebFragment extends PageFragment {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     protected void showWidthDialog() {
         View v = getActivity().getLayoutInflater().inflate(R.layout.font_size_dialog, null);
 
@@ -204,7 +202,7 @@ public class WebFragment extends PageFragment {
 
 
         new MaterialDialog.Builder(getActivity())
-                .title(" WDB 1.2.4")
+                .title("Morphine (WDB)")
                 .customView(v, true)
                 .positiveText("Ок")
                 .show();
