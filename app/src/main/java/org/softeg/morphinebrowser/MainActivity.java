@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     private Drawer.Result drawerResult = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
 
@@ -45,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
                 .withActivity(this)
                 .withToolbar(toolbar) //отображение тулбара
                 .withActionBarDrawerToggle(true) // значок гамбургера (если true, то при нажатии на значок, будет открываться дровер)
-                .withHeader(R.layout.drawer_header) //хидэр Navigation Drawer
+              //  .withHeader(R.layout.drawer_header) //хидэр Navigation Drawer
                         //добавляю пункты в дровер
                 .addDrawerItems(
                         //начало списка
@@ -124,13 +125,16 @@ public class MainActivity extends ActionBarActivity {
 
         transaction.commit();
     }
+    //я хуею от этого кода :)))
+
 
     @Override
     public void onBackPressed() {
-       /* if(drawerResult.isDrawerOpen()){
+
+        AppWebView webView = ((WebFragment)getSupportFragmentManager().findFragmentById(R.id.topic_fragment_container)).getWebView();
+           /* if(drawerResult.isDrawerOpen()){
             drawerResult.closeDrawer();
         }*/
-        AppWebView webView = ((WebFragment)getSupportFragmentManager().findFragmentById(R.id.topic_fragment_container)).getWebView();
         if (webView!=null && webView.canGoBack()) {
             webView.goBack();
         }else {

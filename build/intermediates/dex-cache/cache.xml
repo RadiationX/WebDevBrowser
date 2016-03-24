@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\exploded-aar\com.mikepenz.materialdrawer\library\0.9.5\jars\classes.jar"
+        jar="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\exploded-aar\com.obsez.android.lib.filechooser\filechooser\1.1.2\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="196889103665d7eae17105a5a78f141086044301">
-        <dex dex="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\pre-dexed\debug\classes-95a48a022613bdc80eda39a444763931faf981b4.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\exploded-aar\com.mikepenz.iconics\library\0.7.3\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6d88ec155032460a5f4efa723a04c460d3391193">
-        <dex dex="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\pre-dexed\debug\classes-4dede9c5da0324d993bce61bdb2563fe1a7d24f6.jar" />
+        sha1="c7dfa940370821a36e30de865a26db53091aed15">
+        <dex dex="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\pre-dexed\debug\classes-8234302ecbb6957dd71b1371f8c757ff5459c311.jar" />
     </item>
 
 </items>

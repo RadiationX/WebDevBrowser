@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.folderselector.FileChooserDialog;
 
 import org.softeg.morphinebrowser.AppLog;
 import org.softeg.morphinebrowser.AppPreferences;
@@ -37,7 +38,7 @@ public abstract class PageFragment extends PageViewFragment implements
     protected HtmlOutManager mHtmlOutManager;
     protected int mScrollY = 0;
 
-    protected void initHtmlOutManager(){
+    protected void initHtmlOutManager() {
         mHtmlOutManager = new HtmlOutManager(this);
         mHtmlOutManager.registerInterfaces(mWebView);
     }
@@ -53,7 +54,6 @@ public abstract class PageFragment extends PageViewFragment implements
             mScrollY = savedInstanceState.getInt(SCROLL_Y_KEY);
         }
     }
-
 
 
     @Override
@@ -91,7 +91,6 @@ public abstract class PageFragment extends PageViewFragment implements
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mHtmlOutManager.onActivityResult(requestCode, resultCode, data);
     }
-
 
 
     public void saveHtml() {
@@ -193,10 +192,10 @@ public abstract class PageFragment extends PageViewFragment implements
                 .show();
         editText.selectAll();
         editText.requestFocus();
-        ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
-    protected void showSelectStyleDialog(){
+    protected void showSelectStyleDialog() {
 //        try {
 //            Context context = getActivity();
 //            ArrayList<CharSequence> newStyleNames = new ArrayList<CharSequence>();
@@ -230,6 +229,7 @@ public abstract class PageFragment extends PageViewFragment implements
 //            AppLog.e(ex);
 //        }
     }
+
     protected void writeUrl() {
         View v = getActivity().getLayoutInflater().inflate(R.layout.url_textview, null);
         assert v != null;
@@ -271,7 +271,8 @@ public abstract class PageFragment extends PageViewFragment implements
             }
         }
     }
-    protected void showCacheDialog(){
+
+    protected void showCacheDialog() {
         new MaterialDialog.Builder(getContext())
                 .title("Настройки кеша")
                 .items(new String[]{"Сначала кеш, потом сеть", "Отключить кеш", "Только из кеша"})

@@ -1,0 +1,6 @@
+<root>
+  <item
+      name='android.support.v4.app.Fragment android.support.v4.app.FragmentActivity getActivity()'>
+    <annotation name='android.support.annotation.NonNull' />
+  </item>
+</root>

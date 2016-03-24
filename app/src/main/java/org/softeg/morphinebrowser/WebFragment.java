@@ -21,7 +21,7 @@ import org.softeg.morphinebrowser.pageviewcontrol.PageFragment;
 /*
  * Created by slartus on 25.10.2014.
  */
-public class WebFragment extends PageFragment {
+public class WebFragment extends PageFragment /*implements FileChooserDialog.FileCallback*/{
     private static final String URL_KEY = "WebFragment.URL";
 
     public static Fragment getInstance(Uri url) {
@@ -87,7 +87,10 @@ public class WebFragment extends PageFragment {
         } else if (id == R.id.action_about) {
             showAboutDialog();
             return true;
-        }
+        } /*else if (id == R.id.action_choose_file){
+            showFileChooserDialog();
+            return true;
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -207,7 +210,22 @@ public class WebFragment extends PageFragment {
                 .positiveText("Ок")
                 .show();
     }
+    //чета не срослось :((( (на this в билдере ругается)
+/*
+    protected void showFileChooserDialog(){
+        new FileChooserDialog.Builder(this)
+                .chooseButton("выбрать")  // лэйбл кнопки
+                .initialPath(Environment.getExternalStorageDirectory().getPath())  // путь который открывается при создании диалога
+                .mimeType("text/html") // MIME ФИЛЬТР
+                .tag("optional-identifier")
+                .show();
+    }
 
+    @Override
+    public void onFileSelection(@NonNull FileChooserDialog dialog, @NonNull File file) {
 
+        final String tag = dialog.getTag(); // берет тэг из билдера
+    }
+*/
 }
 
