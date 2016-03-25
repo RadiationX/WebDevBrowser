@@ -8,7 +8,7 @@ android {
         applicationId "org.softeg.morphinebrowser"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 18
+        versionCode 25
         versionName "1.2.6"
     }
     compileOptions {

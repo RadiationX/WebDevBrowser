@@ -17,5 +17,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="about_text">Разработчики\nАртём Слинкин (slartus)\nЕвгений Низамиев (Radiation15/RadiationX)\n\nПомошник:\nАртём Жиганов (Snow Volf)\n\nOсобая благодарность:\nАлексей Шолохов (Morfij)</string>
+    <string name="write_url">Ввести URL</string>
+    <string name="refresh">Обновить</string>
+    <string name="fontsize">Размер шрифта</string>
+    <string name="scr_w">Ширина экрана</string>
+    <string name="save">Сохранить</string>
+    <string name="get_content">Выбрать файл</string>
+    <string name="cache_settings">Настройки кеша</string>
+    <string name="about_program">О программе</string>
+    <string name="getActivity_finish">Закрыть</string>
 
 </resources>

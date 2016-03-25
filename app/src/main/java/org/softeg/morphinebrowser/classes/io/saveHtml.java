@@ -1,4 +1,4 @@
-package org.softeg.morphinebrowser.classes;
+package org.softeg.morphinebrowser.classes.io;
 
 import android.app.Activity;
 import android.content.Intent;

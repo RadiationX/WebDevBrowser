@@ -1,10 +1,17 @@
 package org.softeg.morphinebrowser;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
@@ -13,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -87,10 +95,11 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
         } else if (id == R.id.action_about) {
             showAboutDialog();
             return true;
-        } /*else if (id == R.id.action_choose_file){
-            showFileChooserDialog();
+        }  else if (id == R.id.action_choose_file) {
+            openHtml();
             return true;
-        }*/
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -210,22 +219,57 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
                 .positiveText("Ок")
                 .show();
     }
-    //чета не срослось :((( (на this в билдере ругается)
+
+    private static final int FILE_CHOOSER = 1;
+    private String lastSelectDirPath = Environment.getExternalStorageDirectory().getPath();
+    public void openHtml() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getActivity(), "Необходимы повышенные привелегии", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        CharSequence[] items = new CharSequence[]{"ХТМЛ"/*, "КАРТИНКА"*/};
+        new MaterialDialog.Builder(getContext())
+                .items(items)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View view, int i, CharSequence items) {
+                        switch (i) {
+                            case 0://вызываю GET_CONTENT
+
+                                try {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                                    intent.setType("text/html");
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+                                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                                    intent.setDataAndType(Uri.parse("file://" + lastSelectDirPath), "text/html");
+                                    startActivityForResult(intent, FILE_CHOOSER);
+
+                                } catch (ActivityNotFoundException ex) {
+                                    Toast.makeText(getActivity(), "Приложение для выбора файла не найдено!", Toast.LENGTH_LONG).show();
+                                } catch (Exception ex) {
+                                    AppLog.e(getActivity(), ex);
+                                }
 /*
-    protected void showFileChooserDialog(){
-        new FileChooserDialog.Builder(this)
-                .chooseButton("выбрать")  // лэйбл кнопки
-                .initialPath(Environment.getExternalStorageDirectory().getPath())  // путь который открывается при создании диалога
-                .mimeType("text/html") // MIME ФИЛЬТР
-                .tag("optional-identifier")
+                                break;
+                            case 1: //графика
+
+                                try {
+                                    Intent imageintent = new Intent(
+                                            Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+                                        imageintent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                                    startActivityForResult(imageintent, MY_INTENT_CLICK);
+                                } catch (ActivityNotFoundException ex) {
+                                    Toast.makeText(getActivity(), "Ни одно приложение не установлено для выбора изображения!", Toast.LENGTH_LONG).show();
+                                } catch (Exception ex) {
+                                    AppLog.e(getActivity(), ex);
+                                }
+                                break;*/
+                        }
+                    }
+                })
                 .show();
     }
-
-    @Override
-    public void onFileSelection(@NonNull FileChooserDialog dialog, @NonNull File file) {
-
-        final String tag = dialog.getTag(); // берет тэг из билдера
-    }
-*/
 }
 
