@@ -13,6 +13,10 @@
 -- Возможность кэширования страниц  
 
 #Библиотеки
-mikepenz/MaterialDrawer   https://github.com/mikepenz/MaterialDrawer
+mikepenz/MaterialDrawer  https://github.com/mikepenz/MaterialDrawer
 
-afollestad/material-dialogs  https://github.com/afollestad/material-dialogs
+afollestad/Material Dialogs  https://github.com/afollestad/material-dialogs
+
+hedzr/Android file chooser  https://github.com/hedzr/android-file-chooser
+
+acra/ACRA  https://github.com/acra/ACRA
