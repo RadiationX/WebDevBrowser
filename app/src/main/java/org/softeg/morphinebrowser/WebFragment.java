@@ -250,22 +250,9 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
                                 } catch (Exception ex) {
                                     AppLog.e(getActivity(), ex);
                                 }
-/*
-                                break;
-                            case 1: //графика
 
-                                try {
-                                    Intent imageintent = new Intent(
-                                            Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-                                        imageintent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                                    startActivityForResult(imageintent, MY_INTENT_CLICK);
-                                } catch (ActivityNotFoundException ex) {
-                                    Toast.makeText(getActivity(), "Ни одно приложение не установлено для выбора изображения!", Toast.LENGTH_LONG).show();
-                                } catch (Exception ex) {
-                                    AppLog.e(getActivity(), ex);
-                                }
-                                break;*/
+                                break;
+                            
                         }
                     }
                 })
