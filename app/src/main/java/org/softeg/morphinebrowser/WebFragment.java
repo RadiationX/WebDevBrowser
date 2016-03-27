@@ -249,14 +249,8 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
                                     Toast.makeText(getActivity(), R.string.ex_not_found_fm, Toast.LENGTH_LONG).show();
                                 } catch (Exception ex) {
                                     AppLog.e(getActivity(), ex);//записывается в лог проги как ошибка
-                                }
-<<<<<<< HEAD
-                                break;
-=======
-
-                                break;
-                            
->>>>>>> origin/master
+                                
+                                break
                         }
                     }
                 })
