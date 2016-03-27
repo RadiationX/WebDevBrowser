@@ -10,6 +10,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.softeg.morphinebrowser.App;
 import org.softeg.morphinebrowser.AppLog;
+import org.softeg.morphinebrowser.R;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -21,7 +22,7 @@ public class saveHtml {
     public saveHtml(final Activity activity, final String html, final String defaultFileName){
         final String[] fileName = {defaultFileName};
         new MaterialDialog.Builder(activity)
-                .title("Экспорт HTML")
+                .title(R.string.export_html)
                 .input(defaultFileName, defaultFileName, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
@@ -29,15 +30,15 @@ public class saveHtml {
                     }
                 })
                 .alwaysCallInputCallback()
-                .positiveText("Ок")
-                .negativeText("Отмена")
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
                         try {
                             String state = Environment.getExternalStorageState();
                             if (!Environment.MEDIA_MOUNTED.equals(state)) {
-                                Toast.makeText(activity, "Проверьте доступность sd!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, R.string.ex_sd, Toast.LENGTH_SHORT).show();
                                 return;
                             }
 

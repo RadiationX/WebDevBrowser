@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
                                         drawerResult.updateBadge(String.valueOf(badge - 1), position);
                                     }
                                 } catch (Exception e) {
-                                    Log.e("MorphLog", "Нахрена ты это сделал? Зачем нажал на плюс?");
+                                    Log.e("MorphLog", getString(R.string.ex_plus));
                                 }
                             }
                         }

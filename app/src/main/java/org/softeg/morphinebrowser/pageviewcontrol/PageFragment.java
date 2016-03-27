@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.folderselector.FileChooserDialog;
 
 import org.softeg.morphinebrowser.AppLog;
 import org.softeg.morphinebrowser.AppPreferences;
@@ -172,10 +171,10 @@ public abstract class PageFragment extends PageViewFragment implements
             }
         });
         new MaterialDialog.Builder(getActivity())
-                .title("Размер шрифта")
+                .title(R.string.fontsize)
                 .customView(v, false)
-                .positiveText("Ок")
-                .negativeText("Отмена")
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
@@ -237,10 +236,10 @@ public abstract class PageFragment extends PageViewFragment implements
         editText.setText(globalUrl);
 
         new MaterialDialog.Builder(getActivity())
-                .title("Введите URL")
+                .title(R.string.enter_url)
                 .customView(v, false)
-                .positiveText("Ок")
-                .negativeText("Отмена")
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
@@ -274,8 +273,8 @@ public abstract class PageFragment extends PageViewFragment implements
 
     protected void showCacheDialog() {
         new MaterialDialog.Builder(getContext())
-                .title("Настройки кеша")
-                .items(new String[]{"Сначала кеш, потом сеть", "Отключить кеш", "Только из кеша"})
+                .title(R.string.cache_settings)
+                .items(new String[]{getString(R.string.c_s), getString(R.string.off_c), getString(R.string.only_c)})
                 .itemsCallbackSingleChoice(AppPreferences.getCacheMode() - 1, new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {

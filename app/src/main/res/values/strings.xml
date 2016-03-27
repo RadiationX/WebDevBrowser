@@ -26,5 +26,18 @@
     <string name="cache_settings">Настройки кеша</string>
     <string name="about_program">О программе</string>
     <string name="getActivity_finish">Закрыть</string>
+    <string name="ex_storage_prem">Необходимы повышенные привелегии</string>
+    <string name="ex_not_found_fm">Приложение для выбора файла не найдено!</string>
+    <string name="ok">Ок</string>
+    <string name="cancel">Отмена</string>
+    <string name="about_title">Morphine (WDB)</string>
+    <string name="enter_url">Введите Url</string>
+    <string name="c_s">Сначала кеш, потом сеть</string>
+    <string name="off_c">Отключить кеш</string>
+    <string name="only_c">Только из кеша</string>
+    <string name="ex_plus">Нахрена ты это сделал? Зачем нажал на плюс?</string>
+    <string name="fi_html">ХТМЛ</string>
+    <string name="export_html">Экспорт HTML</string>
+    <string name="ex_sd">Проверьте доступность sd!</string>
 
 </resources>

@@ -199,10 +199,10 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
             }
         });
         new MaterialDialog.Builder(getActivity())
-                .title("Ширина экрана")
+                .title(R.string.scr_w)
                 .customView(v, false)
-                .positiveText("Ок")
-                .negativeText("Отмена")
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
                 .show();
         editText.selectAll();
         editText.requestFocus();
@@ -214,20 +214,20 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
 
 
         new MaterialDialog.Builder(getActivity())
-                .title("Morphine (WDB)")
+                .title(R.string.about_title)
                 .customView(v, true)
-                .positiveText("Ок")
+                .positiveText(R.string.ok)
                 .show();
     }
 
-    private static final int FILE_CHOOSER = 1;
-    private String lastSelectDirPath = Environment.getExternalStorageDirectory().getPath();
+    public static final int FILE_CHOOSER = 1; //инит
+    public String lastSelectDirPath = Environment.getExternalStorageDirectory().getPath();//для kit-kat и новее
     public void openHtml() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getActivity(), "Необходимы повышенные привелегии", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {//для lollipop и новее
+            Toast.makeText(getActivity(), R.string.ex_storage_prem, Toast.LENGTH_LONG).show();
             return;
         }
-        CharSequence[] items = new CharSequence[]{"ХТМЛ"/*, "КАРТИНКА"*/};
+        CharSequence[] items = new CharSequence[]{getString(R.string.fi_html)/*, "ЛЮБОЙ ДРУГОЙ ПУНКТ МЕНЮ"*/};
         new MaterialDialog.Builder(getContext())
                 .items(items)
                 .itemsCallback(new MaterialDialog.ListCallback() {
@@ -238,38 +238,24 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
 
                                 try {
                                     Intent intent = new Intent();
-                                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                                    intent.setType("text/html");
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+                                    intent.setAction(Intent.ACTION_GET_CONTENT);//просит систему вызвать get_content
+                                    intent.setType("text/html");// uri
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) //выпоняется только при sdk >=18
                                         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                                     intent.setDataAndType(Uri.parse("file://" + lastSelectDirPath), "text/html");
                                     startActivityForResult(intent, FILE_CHOOSER);
 
-                                } catch (ActivityNotFoundException ex) {
-                                    Toast.makeText(getActivity(), "Приложение для выбора файла не найдено!", Toast.LENGTH_LONG).show();
+                                } catch (ActivityNotFoundException ex) {//если ни одно приложение не найдено
+                                    Toast.makeText(getActivity(), R.string.ex_not_found_fm, Toast.LENGTH_LONG).show();
                                 } catch (Exception ex) {
-                                    AppLog.e(getActivity(), ex);
+                                    AppLog.e(getActivity(), ex);//записывается в лог проги как ошибка
                                 }
-/*
                                 break;
-                            case 1: //графика
-
-                                try {
-                                    Intent imageintent = new Intent(
-                                            Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-                                        imageintent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                                    startActivityForResult(imageintent, MY_INTENT_CLICK);
-                                } catch (ActivityNotFoundException ex) {
-                                    Toast.makeText(getActivity(), "Ни одно приложение не установлено для выбора изображения!", Toast.LENGTH_LONG).show();
-                                } catch (Exception ex) {
-                                    AppLog.e(getActivity(), ex);
-                                }
-                                break;*/
                         }
                     }
                 })
                 .show();
     }
+
 }
 
