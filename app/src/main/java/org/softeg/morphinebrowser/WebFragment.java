@@ -99,8 +99,6 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
             openHtml();
             return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -242,7 +240,7 @@ public class WebFragment extends PageFragment /*implements FileChooserDialog.Fil
                                     intent.setType("text/html");// uri
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) //выпоняется только при sdk >=18
                                         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                                    intent.setDataAndType(Uri.parse("file://" + lastSelectDirPath), "text/html");
+                                    intent.setDataAndType(Uri.parse/*loadUrl*/("file://" + lastSelectDirPath), "text/html");
                                     startActivityForResult(intent, FILE_CHOOSER);
 
                                 } catch (ActivityNotFoundException ex) {//если ни одно приложение не найдено
