@@ -17,6 +17,4 @@ mikepenz/MaterialDrawer  https://github.com/mikepenz/MaterialDrawer
 
 afollestad/Material Dialogs  https://github.com/afollestad/material-dialogs
 
-hedzr/Android file chooser  https://github.com/hedzr/android-file-chooser
-
 acra/ACRA  https://github.com/acra/ACRA
