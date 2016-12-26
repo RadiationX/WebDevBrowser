@@ -1,6 +1,7 @@
 package org.softeg.morphinebrowser.common;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
@@ -15,7 +16,7 @@ import org.softeg.morphinebrowser.AppLog;
 public class UrlExtensions {
 
 
-    public static void showChoiceDialog(final Activity activity, final String url) {
+    public static void showChoiceDialog(final Context activity, final String url) {
         try {
             final int OPEN_IN_BROWSER = 0;
             final int SHARE_IT = 1;

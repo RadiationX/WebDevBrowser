@@ -1,1 +1,1 @@
-include ':app', ':acra-4.8.5'
+include ':app'

@@ -1,14 +1,17 @@
 package org.softeg.morphinebrowser.classes.io;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import org.softeg.morphinebrowser.App;
 import org.softeg.morphinebrowser.AppLog;
 import org.softeg.morphinebrowser.R;
 
@@ -19,13 +22,13 @@ import java.io.FileWriter;
  * Created by Snow Volf on 06.02.16.
  */
 public class saveHtml {
-    public saveHtml(final Activity activity, final String html, final String defaultFileName){
+    public saveHtml(final Context activity, final String html, final String defaultFileName){
         final String[] fileName = {defaultFileName};
         new MaterialDialog.Builder(activity)
                 .title(R.string.export_html)
                 .input(defaultFileName, defaultFileName, new MaterialDialog.InputCallback() {
                     @Override
-                    public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
+                    public void onInput(@NonNull MaterialDialog materialDialog, CharSequence charSequence) {
                         fileName[0] = charSequence.toString();
                     }
                 })
@@ -42,15 +45,31 @@ public class saveHtml {
                                 return;
                             }
 
-                            File file = new File(App.getInstance().getExternalFilesDir(null), fileName[0]+".html");
+                            String rootPath = Environment.getExternalStorageDirectory().toString();
+                            File folder = new File(rootPath + "/WDB"+ "/pages");
+                            folder.mkdirs();
+                            File file = new File(folder, fileName[0]+".html");
                             FileWriter out = new FileWriter(file);
                             out.write(html);
                             out.close();
-                            Uri uri = Uri.fromFile(file);
-
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                            intent.setDataAndType(uri, "text/html");
-                            activity.startActivity(intent);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                                try {
+                                    Uri uri = FileProvider.getUriForFile(activity, activity.getApplicationContext().getPackageName() + ".provider", file);
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(uri, "text/html");
+                                    activity.startActivity(intent);
+                                } catch (Exception e){
+                                    Log.e("WDB", "ошибка провайдера");
+                                    e.printStackTrace();
+                                    Toast.makeText(activity, "Work in progress...", Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                //устарело с API 24
+                                Uri uri = Uri.fromFile(file);
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setDataAndType(uri, "text/html");
+                                activity.startActivity(intent);
+                            }
                         } catch (Exception e) {
                             AppLog.e(activity, e);
                         }

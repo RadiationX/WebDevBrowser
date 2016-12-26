@@ -10,45 +10,52 @@
 
     <item android:id="@+id/action_refresh"
         android:title="@string/refresh"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.ImageButton"
         android:icon="@drawable/ic_reload_white_24dp"/>
 
     <item android:id="@+id/action_fontsize"
         android:title="@string/fontsize"
-        android:orderInCategory="300"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_format_size_white_24dp"/>
 
     <item android:id="@+id/action_width"
         android:title="@string/scr_w"
-        android:orderInCategory="400"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_crop_free_white_24dp"/>
+        android:icon="@drawable/ic_transform_white_24dp"/>
+
+    <item android:id="@+id/action_outline"
+        android:title="@string/elements_outline"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_white_24dp"/>
 
     <item android:id="@+id/action_save"
         android:title="@string/save"
-        android:orderInCategory="500"
-        app:showAsAction="ifRoom"
+        android:orderInCategory="100"
+        app:showAsAction="never"
         android:icon="@drawable/ic_content_save_white_24dp"/>
     <item android:id="@+id/action_choose_file"
         android:title="@string/get_content"
-        android:orderInCategory="600"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_content_save_white_24dp"/>
     <item android:id="@+id/cache_mode"
         android:title="@string/cache_settings"
-        android:orderInCategory="700"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_content_save_white_24dp"/>
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_sd_card_black_24dp"/>
     <item android:id="@+id/action_about"
         android:title="@string/about_program"
-        android:orderInCategory="800"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_close_white_24dp"/>
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_info_black_24dp"/>
     <item android:id="@+id/action_close"
         android:title="@string/getActivity_finish"
-        android:orderInCategory="900"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_close_white_24dp"/>
 </menu>

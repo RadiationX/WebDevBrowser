@@ -2,11 +2,58 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\exploded-aar\com.obsez.android.lib.filechooser\filechooser\1.1.2\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c7dfa940370821a36e30de865a26db53091aed15">
-        <dex dex="C:\Users\USER\projectX\WebDevBrowser\app\build\intermediates\pre-dexed\debug\classes-8234302ecbb6957dd71b1371f8c757ff5459c311.jar" />
+        is-multidex="true"
+        jar="C:\Users\Пользователь\.android\build-cache\3b8f8c6916fcff14da5fb5c025478a8f78bc9f6b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5b398ff8f4e91cf9ef306241b78667870b9c3a06">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0091eff27c4448c54093a626457c0cbf93109ef4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Пользователь\.android\build-cache\f69079e0ffcaffc89a6b192b6980eb714e978a1e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="16795a75616fe3ba9df9ae4af09202145e3a26dc">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5979575577f0ed2d32c8ee344a7d7c6630d0dba2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\ProjectX\WebDevBrowser\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="606a405bbba90e88f7b46964c5e468e652f41aef">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_987758038b657eab763da03dd75b6cb13d95b543\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Пользователь\.android\build-cache\af36a1afac4201007ab088973806ebd81b4d3304\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a846ddbf5bf88dee5f89d4dffe22c864f576d9b0">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_817f35f828769f87df6064c11240a4f49cf72a47\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Пользователь\.android\build-cache\86ba08979d9f068526d02d872c56e0d8962c2944\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6ac094121e75b4b87432beb9305d70c68ec6dcab">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_27997650a44bf964316aca7417af8e135f2452fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Пользователь\.android\build-cache\86ba08979d9f068526d02d872c56e0d8962c2944\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="67355078cd30daae43f62ba47a4663ee6edb976e">
+        <dex dex="C:\ProjectX\WebDevBrowser\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_518be0c92c04b700387dd9fbf4ed86b52fbae279\classes.dex" />
     </item>
 
 </items>

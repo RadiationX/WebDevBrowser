@@ -1,5 +1,6 @@
 package org.softeg.morphinebrowser.pageviewcontrol.htmloutinterfaces;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.webkit.WebView;
 
@@ -23,6 +24,7 @@ public class HtmlOutManager {
         interfaces.add(new HtmlOut(htmlOutCallBack));
     }
 
+    @SuppressLint("JavascriptInterface")
     public void registerInterfaces(WebView webView) {
         for (IHtmlOut i : interfaces) {
             webView.addJavascriptInterface(i, i.getName());

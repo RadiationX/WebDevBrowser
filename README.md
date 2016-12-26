@@ -13,8 +13,6 @@
 -- Возможность кэширования страниц  
 
 #Библиотеки
-mikepenz/MaterialDrawer  https://github.com/mikepenz/MaterialDrawer
-
 afollestad/Material Dialogs  https://github.com/afollestad/material-dialogs
 
 acra/ACRA  https://github.com/acra/ACRA

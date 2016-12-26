@@ -1,2 +1,0 @@
-configurations.create("default")
-artifacts.add("default", file('acra-4.8.5.aar'))

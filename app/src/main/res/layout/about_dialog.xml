@@ -1,19 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:weightSum="1">
-
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/about_text"
-        android:id="@+id/textView2"
-        android:layout_weight="0.91"
-        android:textColorLink="#4442bb" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/about_content"
+        android:text="@string/about_text" />
 
-</LinearLayout>
+    <TextView
+        android:text="debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/debug_info"
+        android:layout_below="@+id/about_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

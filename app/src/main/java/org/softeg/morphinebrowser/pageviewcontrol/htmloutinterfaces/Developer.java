@@ -1,11 +1,16 @@
-package org.softeg.morphinebrowser.pageviewcontrol.htmloutinterfaces;/*
+package org.softeg.morphinebrowser.pageviewcontrol.htmloutinterfaces;
+
+/*
  * Created by slinkin on 09.07.2014.
  */
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
@@ -40,7 +45,7 @@ public class Developer implements IHtmlOut {
         return control.getActivity();
     }
 
-    private final static int FILECHOOSER_RESULTCODE = App.getInstance().getUniqueIntValue();
+    public final static int FILECHOOSER_RESULTCODE = App.getInstance().getUniqueIntValue();
 
     @JavascriptInterface
     public void showChooseCssDialog() {
@@ -83,7 +88,7 @@ public class Developer implements IHtmlOut {
 
    @JavascriptInterface
     public void saveHtml(final String html) {
-        new saveHtml(getActivity(),html,"Topic");
+        new saveHtml(getActivity(),html, "Topic");
     }
 
     public void onActivityResult(int requestCode, int resultCode,
@@ -95,7 +100,6 @@ public class Developer implements IHtmlOut {
                     .replace("\\", "\\\\")
                     .replace("'", "\\'").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "");
 
-
             control.getWebView().evalJs("$('#dev-less-file-path')[0].value='" + attachFilePath + "';");
             control.getWebView().evalJs("window['HtmlInParseLessContent']('" + cssData + "');");
 
@@ -103,5 +107,11 @@ public class Developer implements IHtmlOut {
         }
     }
 
-
+    @JavascriptInterface
+    public void copyPast(String text) {
+        ClipboardManager manager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("green figa", text);
+        manager.setPrimaryClip(clipData);
+        Toast.makeText(getActivity(), "Скопировал: " + text, Toast.LENGTH_SHORT).show();
+    }
 }
